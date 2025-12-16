@@ -43,7 +43,13 @@ export default function Login() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black">
+    <main className="return flex min-h-screen flex-col items-center justify-center bg-black">
+      <Link 
+        href="/" 
+        className="absolute top-8 left-8 text-zinc-500 hover:text-white transition-colors text-sm font-medium"
+      >
+    Home
+  </Link>
       <h1 className="text-white text-4xl font-bold mb-8">Log in to Randomly</h1>
       
       {/* CARD CONTAINER */}

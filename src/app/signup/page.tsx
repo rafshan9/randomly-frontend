@@ -51,7 +51,13 @@ export default function Signup() {
 
   
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black">
+    <main className="flex relative min-h-screen flex-col items-center justify-center bg-black">
+      <Link 
+        href="/" 
+        className="absolute top-8 left-8 text-zinc-500 hover:text-white transition-colors text-sm font-medium"
+      >
+        Home
+      </Link>
       <h1 className="text-white text-4xl font-bold mb-8">Signup to Randomly</h1>
       
       {/* CARD CONTAINER */}
@@ -74,14 +80,15 @@ export default function Signup() {
         <div className="text-sm text-zinc-500 self-center">or</div>
 
         <div className="flex gap-4 w-full">
-            {/* --- Input First Name--- */}
+          {/* --- Input First Name --- */}
           <input 
             type="text"
             required 
             placeholder="First name" 
             value={formData.first_name}
             onChange={(e) => setFormData({...formData, first_name: e.target.value})}
-            className="flex-1 rounded-lg border border-zinc-700 bg-transparent p-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-white transition-colors"
+            /* ADDED min-w-0 here */
+            className="flex-1 min-w-0 rounded-lg border border-zinc-700 bg-transparent p-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-white transition-colors"
           />
           {/* --- Input Last Name --- */}
           <input 
@@ -90,7 +97,8 @@ export default function Signup() {
             placeholder="Last Name" 
             value={formData.last_name}
             onChange={(e) => setFormData({...formData, last_name: e.target.value})}
-            className="flex-1 rounded-lg border border-zinc-700 bg-transparent p-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-white transition-colors"
+            /* ADDED min-w-0 here */
+            className="flex-1 min-w-0 rounded-lg border border-zinc-700 bg-transparent p-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-white transition-colors"
           />
         </div>
         

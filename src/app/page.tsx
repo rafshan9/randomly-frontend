@@ -1,43 +1,95 @@
-import Image from "next/image"; // Note: You can remove this line if you aren't using the <Image /> component yet
+import Image from "next/image";
+import Link from "next/link";
+// Imports
+import Footer from "@/components/Footer";
+import BrowserMockup from "@/components/BrowserMockup"; 
+import DashboardMockup from "@/components/DashboardMockup"; 
+import ComparisonTable from "@/components/ComparisonTable";
+import FAQ from "@/components/FAQ";
+import FoundersNote from "@/components/FoundersNote";
+import HowItWorks from "@/components/HowItWorks";
+import BackgroundBlob from "@/components/BackgroundBlob"; 
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black">
-      <h1 className="text-white text-4xl font-bold mb-8">Log in to Randomly</h1>
-      
-      {/* CARD CONTAINER */}
-      {/* Added w-full and max-w-md back so it has a proper size */}
-      <div className="flex flex-col items-start gap-[30px] p-[30px] rounded-[14px] bg-[#191919] w-full max-w-md">
+    <main className="overflow-x-hidden">
+
+      {/* === HEADER SECTION WRAPPER === */}
+      {/* Added z-0 to establish a stacking context */}
+      <div className="relative pt-10 pb-20 z-0">
         
-        {/* --- Direct Child 1: Google Button --- */}
-        <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-zinc-700 py-3 text-white hover:bg-zinc-800 transition-colors">
-          <Image
-          src="/icon-google-color.png"
-          alt="Google logo"
-          width={20}
-          height={20}
-          />
-          <span>Continue with Google</span>
-        </button>
+        <div className="absolute inset-0 translate-y-[70%] -z-10">
+           <BackgroundBlob />
+        </div>
 
-        {/* --- Direct Child 2: OR Text --- */}
-        {/* Removed 'items-center'. Kept 'self-center' so it sits in the middle. */}
-        <div className="text-sm text-zinc-500 self-center">or</div>
+        {/* Navbar */}
+        <nav className="relative z-10 flex bg-white/80 backdrop-blur-sm gap-[90px] items-center w-fit rounded-xl mx-auto py-[10px] px-[16px] shadow-sm border border-gray-100">
+          <div className="flex items-center gap-2 font-bold italic">
+            <Image src="/icon-randomly.svg" alt="Logo" width={24} height={24} />
+            Randomly
+          </div>
+          <ul className="flex items-center gap-4 text-sm font-medium">
+            <li><Link href="/pricing" className="hover:text-gray-600">Pricing</Link></li>
+            <li>
+              <div className="flex items-center justify-between gap-[4px]">
+                <Link href="/login" className="flex items-center bg-white text-black py-[4px] px-[20px] border rounded-[4px] hover:bg-gray-50 transition-colors"> Sign in </Link>
+                <Link href="/signup" className="flex items-center bg-black text-white py-[6px] px-[20px] border rounded-[4px] hover:bg-gray-800 transition-colors"> Get Started </Link>
+              </div>
+            </li>          
+          </ul>
+        </nav>
 
-        {/* --- Direct Child 3: Input --- */}
-        <input 
-          type="email" 
-          placeholder="Your personal email address" 
-          className="w-full rounded-lg border border-zinc-700 bg-transparent p-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-white transition-colors"
-        />
+        {/* Hero Section */}
+        <section className="relative z-10 flex flex-col items-center text-center mt-[50px] max-w-[740px] mx-auto px-4"> 
+          <h1 className="text-6xl font-bold tracking-tight mb-6">
+            The pricing widget your portfolio is missing
+          </h1>
 
-        {/* --- Direct Child 4: Email Button --- */}
-        <button className="flex w-full items-center justify-center gap-2 rounded-lg border bg-white py-3 text-black hover:bg-zinc-200 transition-colors">
-          {/* Removed the empty span unless you plan to put an icon there later */}
-          <span className="font-semibold">Continue with email</span>
-        </button>
+          <p className="text-gray-500 text-lg mb-8">
+            Visitors get instant estimates. You get leads that qualify <br />
+            themselves. All automatic, no back-and-forth pricing emails.
+          </p>
+
+          <div className="flex justify-center gap-4">
+            <button className="bg-black text-white py-3 px-6 rounded border border-black font-medium hover:bg-gray-800 transition-colors">
+              Add to your portfolio
+            </button>
+            <button className="bg-white text-black py-3 px-6 rounded border border-gray-300 font-medium hover:bg-gray-50 transition-colors">
+              Get a personal demo
+            </button>
+          </div>
+                  
+          <p className="text-gray-500 text-sm italic mt-4">14 Days Free. No credit card required.</p>
+        </section>
 
       </div>
-    </main> 
+      {/* === END HEADER WRAPPER === */}
+
+
+      {/* Browser Mockup Component */}
+      {/* The blob will visually bleed behind this component now */}
+      <BrowserMockup />
+
+      <HowItWorks />
+
+      <section className="flex flex-col items-center text-center mt-[150px] max-w-7xl mx-auto"> 
+        <div className="max-w-[740px] mx-auto px-4">
+          <h1 className="text-4xl font-bold tracking-tight mb-6">
+            So they submitted. Now what?
+          </h1>
+          <p className="text-gray-500 text-lg mb-8">
+            Your estimate lands in their inbox. Their info lands in your 
+            dashboard. You stay focused on the work matters.
+          </p>
+        </div>
+        <DashboardMockup />     
+      </section>
+
+      <ComparisonTable />
+      <FoundersNote />
+      <FAQ />
+      <Footer />
+      
+    </main>
   );
 }
